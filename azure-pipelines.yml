@@ -12,7 +12,7 @@ variables:
 jobs:
   - job: BuildJob
     steps:
-      - script: echo $(ghtoken)
+      - script: echo $(keyvaultname)
         displayName: 'Display Github Token'
 
    
