@@ -14,14 +14,11 @@ stages:
         azureSubscription: 'azure-kv-connection'
         KeyVaultName: 'kv-github-demo'
         SecretsFilter: 'github-token'
-        SecretsFilter: 'db-password
         RunAsPreJob: true
 
     - script: |
         echo "Token fetched successfully"
         echo "GitHub Token Length: ${#GITHUB_TOKEN}"
-        echo "DB Password Length: ${#DB-PASSWORD}"
         echo "Pipeline completed."
       env:
         GITHUB_TOKEN: $(github-token)
-        DB-PASSWORD: $(db-password)
