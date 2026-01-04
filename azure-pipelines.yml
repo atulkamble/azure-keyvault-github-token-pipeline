@@ -19,7 +19,6 @@ stages:
     - script: |
         echo "Token fetched successfully"
         echo "GitHub Token Length: ${#GITHUB_TOKEN}"
-        echo "Github Token: ${GITHUB_TOKEN}"
         echo "Pipeline completed."
       env:
         GITHUB_TOKEN: $(github-token)
