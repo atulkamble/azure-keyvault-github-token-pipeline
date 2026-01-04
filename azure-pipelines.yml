@@ -16,6 +16,7 @@ stages:
         SecretsFilter: 'github-token'
         RunAsPreJob: true
 
+        
     - script: |
         echo "Token fetched successfully"
         echo "GitHub Token Length: ${#GITHUB_TOKEN}"
