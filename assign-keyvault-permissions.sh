@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # Service Principal Object ID from the error
-ASSIGNEE="fd46ad98-4001-4a32-8e0d-a919420b0c98"
+ASSIGNEE="45ec9bd4-7276-46bf-93b0-1cd04ac02144"
 
 # Key Vault details
-SUBSCRIPTION="50818730-e898-4bc4-bc35-d998af53d719"
+SUBSCRIPTION="08b7b8d4-af42-4972-9517-11ea256ea068"
 RESOURCE_GROUP="rg-kv-demo"
 KEY_VAULT_NAME="kv-github-demo"
 
