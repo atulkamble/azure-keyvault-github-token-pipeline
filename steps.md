@@ -288,3 +288,96 @@ GitHub Token → Azure Key Vault → Azure DevOps Library → Pipeline → Secur
 ```
 
 ---
+
+Here are the **basic Azure CLI commands** to quickly get values for:
+
+* `--assignee`
+* `--assignee-object-id`
+* `--assignee-principal-type`
+
+👉 Keep this as your **quick cheat sheet (exam + real use)**
+
+---
+
+# 🔹 1. Get `--assignee` (User / App)
+
+### ✅ Logged-in user
+
+```bash
+az account show --query user.name -o tsv
+```
+
+---
+
+### ✅ Specific user
+
+```bash
+az ad user show --id user@domain.com --query userPrincipalName -o tsv
+```
+
+---
+
+### ✅ Service Principal (App)
+
+```bash
+az ad sp list --display-name <app-name> -o table
+```
+
+👉 Use:
+
+```bash
+--assignee <email OR appId>
+```
+
+---
+
+# 🔹 2. Get `--assignee-object-id`
+
+### ✅ Logged-in user
+
+```bash
+az ad signed-in-user show --query id -o tsv
+```
+
+---
+
+### ✅ User
+
+```bash
+az ad user show --id user@domain.com --query id -o tsv
+```
+
+---
+
+### ✅ Service Principal (IMPORTANT for pipelines)
+
+```bash
+az ad sp show --id <appId> --query id -o tsv
+```
+
+---
+
+# 🔹 3. Get `--assignee-principal-type`
+
+👉 Just remember values:
+
+```bash
+User
+ServicePrincipal
+Group
+```
+
+---
+
+# 🔹 4. Minimal Working Example
+
+```bash
+az role assignment create \
+  --assignee-object-id <object-id> \
+  --assignee-principal-type ServicePrincipal \
+  --role Reader \
+  --scope /subscriptions/<sub-id>
+```
+
+---
+
