@@ -1,7 +1,3 @@
-Here is your **clean, structured, trainer-style documentation (README format)** for the **Azure Key Vault + GitHub Token + Azure DevOps Pipeline Integration** 👇
-
----
-
 # 🔐 Azure Key Vault + GitHub Token + Azure DevOps Pipeline
 
 ## 📌 Objective
@@ -292,9 +288,3 @@ GitHub Token → Azure Key Vault → Azure DevOps Library → Pipeline → Secur
 ```
 
 ---
-
-If you want, I can also:
-
-* Add **architecture diagram (Mermaid)**
-* Provide **complete working GitHub repo structure**
-* Add **interview Q&A based on this scenario**
