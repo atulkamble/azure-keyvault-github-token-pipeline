@@ -178,9 +178,7 @@ For new deployments, Azure RBAC is generally the preferred model. Microsoft docu
 Using Azure CLI:
 
 ```bash
-az group create \
-  --name keyvault-rg \
-  --location eastus
+az group create --name keyvault-rg --location eastus
 ```
 
 Check:
@@ -196,11 +194,7 @@ az group list -o table
 Key Vault names must be globally unique.
 
 ```bash
-az keyvault create \
-  --name atul-kv-12345 \
-  --resource-group keyvault-rg \
-  --location eastus \
-  --enable-rbac-authorization true
+az keyvault create --name atul-kv-12345 --resource-group keyvault-rg --location eastus --enable-rbac-authorization true
 ```
 
 Check:
@@ -218,10 +212,8 @@ You can replace `atul-kv-12345` with your own unique name.
 Let's store a database password:
 
 ```bash
-az keyvault secret set \
-  --vault-name atul-kv-12345 \
-  --name database-password \
-  --value "MySecurePassword@123"
+az keyvault secret set --vault-name atul-kv-12345 --name database-password --value "MySecurePassword@123"
+
 ```
 
 Now the secret exists inside Key Vault.
@@ -234,14 +226,23 @@ Key Vault
            +-- MySecurePassword@123
 ```
 
+## Role Assignment 
+```
+az role assignment create --role "Key Vault Secrets Officer" --assignee 569e301d-629a-4d19-a477-a250605ef6ba --scope /subscriptions/08b7b8d4-af42-4972-9517-11ea256ea068/resourceGroups/keyvault-rg/providers/Microsoft.KeyVault/vaults/atul-kv-12345
+```
+```
+az role assignment list --assignee 569e301d-629a-4d19-a477-a250605ef6ba --scope /subscriptions/08b7b8d4-af42-4972-9517-11ea256ea068/resourceGroups/keyvault-rg/providers/Microsoft.KeyVault/vaults/atul-kv-12345 \
+  -o table
+```
+```
+az keyvault secret set --vault-name atul-kv-12345 --name database-password --value "MySecurePassword@123"
+```
 ---
 
 ## Step 4 — List Secrets
 
 ```bash
-az keyvault secret list \
-  --vault-name atul-kv-12345 \
-  -o table
+az keyvault secret list --vault-name atul-kv-12345 -o table
 ```
 
 Notice that listing secrets doesn't simply print all secret values.
@@ -251,19 +252,13 @@ Notice that listing secrets doesn't simply print all secret values.
 ## Step 5 — Retrieve the Secret
 
 ```bash
-az keyvault secret show \
-  --vault-name atul-kv-12345 \
-  --name database-password
+az keyvault secret show --vault-name atul-kv-12345 --name database-password
 ```
 
 To return only the value:
 
 ```bash
-az keyvault secret show \
-  --vault-name atul-kv-12345 \
-  --name database-password \
-  --query value \
-  -o tsv
+az keyvault secret show --vault-name atul-kv-12345 --name database-password --query value -o tsv
 ```
 
 Expected:
