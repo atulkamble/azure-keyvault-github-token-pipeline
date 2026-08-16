@@ -1,4 +1,4 @@
-# Azure Key Vault — Theory Points + Basic Practice
+# Azure Key Vault 
 
 Microsoft Azure Key Vault is an Azure service used to **securely store and control access to sensitive information** such as passwords, connection strings, API keys, certificates, and encryption keys.
 
